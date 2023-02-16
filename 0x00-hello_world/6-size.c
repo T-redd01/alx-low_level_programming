@@ -1,10 +1,10 @@
 #include <stdio.h>
 
 /**
- * main - prints sizeof for each declared datatype
- * return - return 0 on success, anything else for error
+ * main - Entry point
+ *
+ * Return: Always 0 (Success)
  */
-
 int main(void)
 {
 	char charVar;
