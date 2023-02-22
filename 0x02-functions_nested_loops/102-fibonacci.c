@@ -8,24 +8,23 @@
  */
 int main(void)
 {
-	int i;
-	int j	= 1, k = 2;
-	int n = j + k;
+	long int i, j, k, n;
 
-	printf("%d, %d, ", j, k);
-	for (i = 3; i <= 50; ++i)
+	j = 1;
+	k = 2;
+	for (i = 1; i <= 50; ++i)
 	{
-		if (i == 50)
+		if (j != 20365011074)
 		{
-			printf("%d\n", n);
+			printf("%ld, ", j);
 		}
 		else
 		{
-			printf("%d, ", n);
-			j = k;
-			k = n;
-			n = j + k;
+			printf("%ld\n", j);
 		}
+		n = j + k;
+		j = k;
+		k = n;
 	}
 	return (0);
 }
