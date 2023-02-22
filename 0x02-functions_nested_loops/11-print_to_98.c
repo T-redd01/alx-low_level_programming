@@ -3,42 +3,41 @@
 
 /**
  * print_to_98 - prints natural nums till 98
- * @i: starting num
+ * @n: starting num
  *
  */
 void print_to_98(int n)
 {
-	if (i <= 98)
+	if (n <= 98)
 	{
-		while (i <= 98)
+		while (n <= 98)
 		{
-			if (i == 98)
+			if (n == 98)
 			{
-				printf("%d", i);
+				printf("%d\n", n);
 				break;
 			}
 			else
 			{
-				printf("%d, ", i);
-				i++;
+				printf("%d, ", n);
+				n++;
 			}
 		}
 	}
 	else
 	{
-		while (i >= 98)
+		while (n >= 98)
 		{
-			if (i == 98)
+			if (n == 98)
 			{
-				printf("%d", i);
+				printf("%d\n", n);
 				break;
 			}
 			else
 			{
-				printf("%d, ", i);
-				i--;
+				printf("%d, ", n);
+				n--;
 			}
 		}
 	}
-	_putchar('\n');
 }
