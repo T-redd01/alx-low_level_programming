@@ -2,8 +2,6 @@
 
 /**
  * jack_bauer - counts minutes of day
- * @count: check num of loops
- * @tl: to end at 23
  *
  */
 void jack_bauer(void)
