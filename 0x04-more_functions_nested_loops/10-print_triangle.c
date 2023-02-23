@@ -3,9 +3,6 @@
 /**
  * print_triangle - prints # size x size times
  * @size: size of triangle
- *
- *
- *
  */
 void print_triangle(int size)
 {
