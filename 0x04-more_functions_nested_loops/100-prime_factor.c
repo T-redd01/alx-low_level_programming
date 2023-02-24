@@ -1,19 +1,23 @@
-#include "main.h"
 #include <stdio.h>
+#include <math.h>
 
 /**
  * main - Entry point
- * Return: 0
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
-	long int n, x, i;
+	long int n;
+	long int x;
+	long int i;
 
-	x = 612852475143
+	n = 612852475143;
+	x = -1;
+
 	while (n % 2 == 0)
 	{
 		x = 2;
-		n = n / 2;
+		n /= 2;
 	}
 
 	for (i = 3; i <= sqrt(n); i = i + 2)
@@ -25,9 +29,10 @@ int main(void)
 		}
 	}
 
-	if (n > 2 && n % 2 != 0)
+	if (n > 2)
 		x = n;
 
-	printf("%d\n", x);
+	printf("%ld\n", x);
+
 	return (0);
 }
