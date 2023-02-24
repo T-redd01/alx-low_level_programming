@@ -1,24 +1,26 @@
 #include "main.h"
 
 /**
- * print_number - prints numbers using _putchar
- * @n: number to print
+ * print_number - (recursive function) prints num using putchar
+ * @n: num to print
  */
-void print_number(int n)
-{
-	int x, count, i, y;
-	
-	x = n;
-	count = 0;
-	while (x != 0)
-	{
-		x = x / 10;
-		cont++;
-	}
-	
-	for (i = 0; i < count; i++)
-	{
-		y = n / (10 * i);
-		_putchar(y + n);
-	}		
-}
+ void print_number(int n)
+ {
+	 unsigned int x;
+	 
+	 if (n < 0)
+	 {
+		 x = -n;
+		 _putchar('-');
+	 }
+	 else
+	 {
+		 x = n;
+	 }
+	 
+	 if (x / 10)
+	 {
+		 print_number(x / 10);
+	 }
+	 _putchar((x % 10) + '0');
+ }
