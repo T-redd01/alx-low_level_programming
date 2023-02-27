@@ -10,7 +10,7 @@ int _strlen(char *s)
 {
 	int i = 1;
 
-	while(1)
+	while (1)
 	{
 		if (*(s + 1) != '\0')
 		{
@@ -22,6 +22,6 @@ int _strlen(char *s)
 			break;
 		}
 	}
-	return i;
+	return (i);
 }
 
