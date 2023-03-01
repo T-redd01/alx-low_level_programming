@@ -2,34 +2,33 @@
 
 /**
  * cap_string - cap 1st let of word
- * @a: string to cap
+ * @arr: string to cap
  *
  * Return: address of string
  */
-char *cap_string(char *a)
+char *cap_string(char *arr)
 {
-	int seps[13] = {44, 59, 46, 33, 63, 34, 40, 41, 123, 125, 32, 10, 9};
-	char ups[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	int i, j, k, x = 0;
+	int i, j;
+	char seps[13] = {' ', '\t', '\n', ',', ';', '.',
+		'!', '?', '"', '(', ')', '{', '}'};
 
-	for (i = 0; a[i] != '\0'; i++)
+	for (i = 0; arr[i] != '\0'; i++)
 	{
+		if (i == 0 && arr[i] >= 'a' && arr[i] <= 'z')
+			arr[i] -= 32;
+
 		for (j = 0; j < 13; j++)
 		{
-			if (a[i] == seps[j])
+			if (arr[i] == seps[j])
 			{
-				for (k = 'a'; k <= 'z'; k++)
+				if (arr[i + 1] >= 'a' && arr[i + 1] <= 'z')
 				{
-					if (a[i + 1] == k)
-					{
-						a[i + 1] = ups[x];
-					}
-					x++;
+					arr[i + 1] -= 32;
 				}
-				x = 0;
 			}
 		}
 	}
-	return (a);
+
+	return (arr);
 }
 
