@@ -1,5 +1,3 @@
-#include "main.h"
-
 /**
  * reverse_array - reverse arr of nums
  * @a: address of arr
