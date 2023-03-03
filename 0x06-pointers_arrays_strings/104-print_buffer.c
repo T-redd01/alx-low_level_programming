@@ -1,15 +1,16 @@
 #include "main.h"
 #include <stdio.h>
 /**
- * print_line - prints a s bytes of a buff
- * @c: buff addr
- * @s: bytes of buff to print
+ * print_line - prints a s bytes of a buffer
+ * @c: buff to print
+ * @s: size of buff to print
  * @l: line of buff to print
  */
 
 void print_line(char *c, int s, int l)
 {
 	int j, k;
+
 	for (j = 0; j <= 9; j++)
 	{
 		if (j <= s)
@@ -29,14 +30,14 @@ void print_line(char *c, int s, int l)
 }
 
 /**
- * print_buffer - prints a buffer
- * @b: buff addr
+ * print_buffer - print buff
+ * @b: buff to prin
  * @size: size of buff
  */
 void print_buffer(char *b, int size)
 {
 	int i;
-		
+
 	for (i = 0; i <= (size - 1) / 10 && size; i++)
 	{
 		printf("%08x: ", i * 10);
