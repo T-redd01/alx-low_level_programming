@@ -7,29 +7,17 @@
  */
 void print_diagsums(int *a, int size)
 {
-	int i, j, ld = 0, rd = 0, x[size][size];
+	int i, x, y;
 
-	for (i = 0; i < size; i++)
-	{
-		for (j = 0; j < size; j++)
-		{
-			x[i][j] = *a;
-			a++;
-		}
-	}
+	x = 0;
+	y = 0;
 
-	for (i = 0; i < size; i++)
+	for (i = 0; i < (size * size); i++)
 	{
-		ld += x[i][i];
+		if (i % (size + 1) == 0)
+			x += a[i];
+		if (i % (size - 1) == 0 && i != 0 && i < size * size - 1)
+			y += a[i];
 	}
-
-	i = (size - 1);
-	j = 0;
-	while (j < size)
-	{
-		rd += x[j][i];
-		i--;
-		j++;
-	}
-	printf("%d, %d\n", ld, rd);
+	printf("%d, %d\n", x, y);
 }
