@@ -25,6 +25,7 @@ int square(int n, int count)
 
 /**
  * _sqrt_recursion - calls square
+ * @n: num to square
  * Return: square func
  */
 int _sqrt_recursion(int n)
