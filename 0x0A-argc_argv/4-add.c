@@ -9,25 +9,23 @@
  */
 int main(int argc, char *argv[])
 {
-	int i, x, j = 0;
-	long conv;
-	char *p;
+	int i, j, x = 0;
 
 	for (i = 1; i < argc; i++)
 	{
-		if (*(*(argv + i)) < '/' || *(*(argv + i)) > ':')
+		for (j = 0; argv[i][j]; j++)
 		{
-			printf("Error\n");
-			return (1);
+			if (argv[i][j] < '0' || argv[i][j] > '9')
+			{
+				printf("Error\n");
+				return (1);
+			}
 		}
-		else
-		{
-			conv = strtol(argv[i], &p, 10);
-			x = conv;
-			j += x;
-		}
+
+		x += atoi(argv[i]);
 	}
-	printf("%d\n", j);
+
+	printf("%d\n", x);
 	return (0);
 }
 
