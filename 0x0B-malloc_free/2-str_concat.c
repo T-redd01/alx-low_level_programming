@@ -26,26 +26,29 @@ int strcounter(char *s)
  */
 char *str_concat(char *s1, char *s2)
 {
-	int nums1 = strcounter(s1);
-	int nums2 = strcounter(s2);
-	int i, j = 0;
-	char *ptr = NULL;
+		int nums1 = strcounter(s1);
+		int nums2 = strcounter(s2);
+		int i, j = 0;
+		char *ptr = NULL;
 
-	ptr = malloc((nums1 + nums2) * sizeof(char));
-	if (ptr == NULL)
-		return (NULL);
+		if (s1 == NULL)
+			s1 = "";
 
-	for (i = 0; s1[i] != '\0'; i++)
-	{
-		ptr[j] = s1[i];
-		j++;
-	}
+		if (s2 == NULL)
+			s2 = "";
 
-	for (i = 0; s2[i] != '\0'; i++)
-	{
-		ptr[j] = s2[i];
-		j++;
-	}
-	ptr[j] = '\0';
-	return (ptr);
+		ptr = malloc((nums1 + nums2 + 1) * sizeof(char));
+		if (ptr == NULL)
+		{
+			free(ptr);
+			return (NULL);
+		}
+
+		for (i = 0; i < nums1; j++, i++)
+			ptr[j] = s1[i];
+
+		for (i = 0; i < nums2; j++, i++)
+			ptr[j] = s2[i];
+		ptr[j] = '\0';
+		return (ptr);
 }
