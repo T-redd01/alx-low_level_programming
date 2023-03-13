@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
  * alloc_grid - creates 2d arr initialized with 0
