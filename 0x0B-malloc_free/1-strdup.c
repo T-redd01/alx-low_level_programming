@@ -1,4 +1,5 @@
-#include <stdio.>
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * _strdup - create array with given str
