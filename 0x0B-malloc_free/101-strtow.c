@@ -61,7 +61,7 @@ char **strtow(char *str)
 		return (NULL);
 
 	ptr = malloc((char_points(str) + 1) * sizeof(char *));
-	if (ptr == NULL)
+	if (ptr == NULL || char_points(str) == 0)
 		return (NULL);
 
 	for (i = 0; i < char_points(str); i++)
