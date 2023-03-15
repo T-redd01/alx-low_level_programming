@@ -7,9 +7,9 @@
  * @str: str to count words
  * Return: num of words
  */
-int char_points(char *str)
+unsigned int char_points(char *str)
 {
-	int i, count = 0;
+	unsigned int i, count = 0;
 
 	for (i = 0; str[i] != '\0'; i++)
 		if (str[i] != ' ' && (str[i + 1] == ' ' || str[i + 1] == '\0'))
@@ -22,9 +22,9 @@ int char_points(char *str)
  * @c: addr of 1st char
  * Return: num of lets
  */
-int count_lets(char *c)
+unsigned int count_lets(char *c)
 {
-	int i = 0;
+	unsigned int i = 0;
 
 	while (c[i] != ' ' && c[i] != '\0')
 		i++;
@@ -54,7 +54,7 @@ void free_func(char **ptr, int i)
  */
 char **strtow(char *str)
 {
-	int i, j = 0, k = 0, lets = 0;
+	unsigned int i, j = 0, k = 0, lets = 0;
 	char **ptr = NULL;
 
 	if (str == NULL || *str == '\0')
@@ -76,13 +76,12 @@ char **strtow(char *str)
 			}
 			j++;
 		}
-		ptr[i] = malloc(lets * sizeof(char));
+		ptr[i] = (char *)malloc((lets + 1) * sizeof(char));
 		if (ptr[i] == NULL)
 		{
 			free_func(ptr, i);
 			return (NULL);
 		}
-
 		k = 0;
 		for (; str[j] != '\0' && str[j] != ' '; j++)
 		{
