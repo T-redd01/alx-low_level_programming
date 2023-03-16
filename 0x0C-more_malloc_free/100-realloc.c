@@ -8,10 +8,8 @@
  * @old_size: size of ptr
  * @new_size: bytes to reallocate
  * Return: newptr to new allocated mem
- */
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+ */void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	unsigned int i;
 	void *newptr = NULL;
 
 	if (new_size == old_size)
