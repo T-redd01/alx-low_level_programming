@@ -10,11 +10,15 @@
  */
 int check_args(char *arg1, char *arg2)
 {
-	if (*arg1 < '0' || *arg1 > '9')
-		return (1);
-	if (*arg2 < '0' || *arg2 > '9')
-		return (1);
+	int i;
 
+	for (i = 0; arg1[i] != '\0'; i++)
+		if (arg1[i] < '0' || arg1[i] > '9')
+			return (1);
+
+	for (i = 0; arg2[i] != '\0'; i++)
+		if (arg2[i] < '0' || arg2[i] > '9')
+			return (1);
 	return (0);
 }
 
