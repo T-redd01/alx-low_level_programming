@@ -4,21 +4,17 @@
 
 /**
  * check_args - checks arg 1 and 2 is digit
- * @arg1: argv[1]
- * @arg2: argv[2]
+ * @argv: argv from main function
  * Return: 1 if not dig 0 otherwise
  */
-int check_args(char *arg1, char *arg2)
+int check_args(char **argv)
 {
-	int i;
+	int i, j;
 
-	for (i = 0; arg1[i] != '\0'; i++)
-		if (arg1[i] < '0' || arg1[i] > '9')
-			return (1);
-
-	for (i = 0; arg2[i] != '\0'; i++)
-		if (arg2[i] < '0' || arg2[i] > '9')
-			return (1);
+	for (i = 1; i < 3; i++)
+		for (j = 0; argv[i][j] != '\0'; j++)
+			if (argv[i][j] < 48 || argv[i][j] > 57)
+				return (1);
 	return (0);
 }
 
