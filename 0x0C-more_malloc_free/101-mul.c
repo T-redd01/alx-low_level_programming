@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 {
 	unsigned long res;
 
-	if (argc != 3 || check_args(argv[1], argv[2]))
+	if (argc != 3 || check_args(argv))
 	{
 		puts("Error\n");
 		exit(98);
