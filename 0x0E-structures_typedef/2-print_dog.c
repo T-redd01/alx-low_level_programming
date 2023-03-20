@@ -1,6 +1,6 @@
 #include "main.h"
 #include <stdio.h>
-#inlude <stdlib.h>
+#include <stdlib.h>
 
 /**
  * print_dog - prints values of strut mems and handles null vals
