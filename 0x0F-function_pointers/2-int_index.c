@@ -5,6 +5,7 @@
  * @array: array to search
  * @size: size of arr
  * @cmp: func pointer
+ * Return: index if match, -1 other wise
  */
 int int_index(int *array, int size, int (*cmp)(int))
 {
