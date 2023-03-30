@@ -1,7 +1,5 @@
-#include "list.h"
+#include "lists.h"
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 /**
  * add_node - adds new node to top of the list like a stack

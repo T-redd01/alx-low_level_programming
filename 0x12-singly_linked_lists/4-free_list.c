@@ -1,5 +1,5 @@
-#include "list.h"
-#include <stdlib.h>
+#include "lists.h"
+#include <stdio.h>
 
 /**
  * free_list - free each node of struct
