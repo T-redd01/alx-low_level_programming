@@ -2,18 +2,18 @@
 #include <stdio.h>
 
 /**
- * free_list - free each node of struct
- * @head: 1st node of list
+ * free_list - frees a linked list
+ * @head: list_t list to be freed
  */
 void free_list(list_t *head)
 {
 	list_t *tmp;
 
-	while (head != NULL)
+	while (head)
 	{
-		tmp = head;
-		head = head->next;
-		free(tmp);
+		tmp = head->next;
+		free(head->str);
+		free(head);
+		head = tmp;
 	}
 }
-
