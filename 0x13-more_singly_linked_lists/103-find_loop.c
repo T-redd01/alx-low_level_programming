@@ -13,7 +13,7 @@ listint_t *find_listint_loop(listint_t *head)
 	if (head == NULL)
 		return (NULL);
 
-	while (hare != NULL && hare->nex != NULL)
+	while (hare != NULL && hare->next != NULL)
 	{
 		tort = tort->next;
 		hare = hare->next->next;
