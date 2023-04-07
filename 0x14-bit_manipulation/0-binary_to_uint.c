@@ -16,18 +16,15 @@ unsigned int binary_to_uint(const char *b)
 
 	while (b[idx] != '\0')
 		idx++;
+	if (idx > sizeof(unsigned int) * 8)
+		return (0);
 	idx -= 1;
-
 	while (idx)
 	{
 		if (b[idx] == '1')
-		{
 			num += pow2;
-		}
 		else if (b[idx] > '1' || b[idx] < '0')
-		{
 			return (0);
-		}
 		pow2 = pow2 << 1;
 		idx--;
 	}
@@ -39,7 +36,6 @@ unsigned int binary_to_uint(const char *b)
 	{
 		return (0);
 	}
-
 	return (num);
 }
 
