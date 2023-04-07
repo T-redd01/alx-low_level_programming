@@ -9,7 +9,7 @@ void print_binary(unsigned long int n)
 	unsigned long int comp = 1UL << ((sizeof(unsigned long int) * 8) - 1);
 
 	if (n == 0)
-		_putchar('0');
+		putchar('0');
 
 	while (comp)
 	{
@@ -22,11 +22,11 @@ void print_binary(unsigned long int n)
 	{
 		if (comp & n)
 		{
-			_putchar('1');
+			putchar('1');
 		}
 		else
 		{
-			_putchar('0');
+			putchar('0');
 		}
 		comp = comp >> 1;
 	}
