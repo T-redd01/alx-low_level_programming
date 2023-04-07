@@ -6,7 +6,7 @@
  */
 void print_binary(unsigned long int n)
 {
-	unsigned long int comp = 1 << ((sizeof(unsigned long int) * 8) - 1);
+	unsigned long int comp = 1UL << ((sizeof(unsigned long int) * 8) - 1);
 
 	if (n == 0)
 		_putchar('0');
