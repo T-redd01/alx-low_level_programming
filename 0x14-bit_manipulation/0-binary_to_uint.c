@@ -24,7 +24,7 @@ unsigned int binary_to_uint(const char *b)
 			num += pow2;
 		else if (b[idx] > '1' || b[idx] < '0')
 			return (0);
-		pow2 = pow2 << 1;
+		pow2 *= 2;
 		idx--;
 	}
 	if (b[idx] == '1')
