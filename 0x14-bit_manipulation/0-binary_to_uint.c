@@ -26,6 +26,8 @@ unsigned int binary_to_uint(const char *b)
 			return (0);
 		pow2 = pow2 << 1;
 		idx--;
+		if (pow2 == 0)
+			pow2 = 1;
 	}
 	if (b[idx] == '1')
 	{
