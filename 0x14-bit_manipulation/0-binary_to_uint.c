@@ -27,7 +27,7 @@ unsigned int binary_to_uint(const char *b)
 		pow2 = pow2 << 1;
 		idx--;
 		if (pow2 == 0)
-			pow2 = 1;
+			return (0);
 	}
 	if (b[idx] == '1')
 	{
