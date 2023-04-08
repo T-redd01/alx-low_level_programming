@@ -1,25 +1,15 @@
 #include <stdio.h>
-#include "../main.h"
+#include <stdlib.h>
 
-/**
- * main - check the code
- *
- * Return: Always 0.
- */
 int main(void)
 {
-    unsigned int n;
+	char str[5] = {'H', 'o', 'l', 4, '\0'};
+	char buffer[60];
+	int i;
 
-    n = binary_to_uint("1");
-    printf("%u\n", n);
-    n = binary_to_uint("101");
-    printf("%u\n", n);
-    n = binary_to_uint("1e01");
-    printf("%u\n", n);
-    n = binary_to_uint("1100010");
-    printf("%u\n", n);
-    n = binary_to_uint("0000000000000000000110010010");
-    printf("%u\n", n);
-    return (0);
+	sprintf(buffer, "echo %s > 101-password", str);
+	system(buffer);
+
+	return (0);
 }
 
