@@ -61,11 +61,11 @@ int main(int ac, char **av)
 		exit(97);
 	}
 
-	from_fd = open(file_from, O_RDONLY);
-	read_fail(from_fd, av[1]);
-
 	to_fd = open(file_to, O_WRONLY | O_CREAT | O_TRUNC /*| O_NOCTTY*/, 0664);
 	write_fail(to_fd, av[2]);
+
+	from_fd = open(file_from, O_RDONLY);
+	read_fail(from_fd, av[1]);
 
 	read_b = read(from_fd, buffer, 1024);
 	read_fail(read_b, av[1]);
