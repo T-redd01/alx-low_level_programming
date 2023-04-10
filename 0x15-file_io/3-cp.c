@@ -64,7 +64,7 @@ int main(int ac, char **av)
 	from_fd = open(file_from, O_RDONLY);
 	read_fail(from_fd, av[1]);
 
-	to_fd = open(file_to, O_WRONLY | O_CREAT | O_TRUNC /*| O_NOCTTY*/, 0664);
+	to_fd = open(file_to, O_WRONLY | O_CREAT | O_TRUNC/* | O_NOCTTY*/, 0664);
 	write_fail(to_fd, av[2]);
 
 	read_b = read(from_fd, buffer, 1024);
