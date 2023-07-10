@@ -64,6 +64,12 @@ int main(int ac, char **av)
 	return (0);
 }
 
+/**
+ * write_errs - writes err msg
+ * @s1: 1st into buffer
+ * @s2: 2nd into buffer
+ * @s3: 3rd into buffer
+ */
 void write_errs(char *s1, char *s2, char *s3)
 {
 	char buf[1024];
