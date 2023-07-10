@@ -38,14 +38,14 @@ int main(int ac, char **av)
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
 	{
-		dprintf(2, "Cannot open <%s>\n", av[1]);
+		dprintf(2, "Cannot open file: <%s>\n", av[1]);
 		exit(98);
 	}
 
 	r = read(fd, &elf64, sizeof(Elf64_Ehdr));
 	if (r == -1)
 	{
-		dprintf(2, "Cannot read from <%s>\n", av[1]);
+		dprintf(2, "Cannot read from file: <%s>\n", av[1]);
 		close(fd);
 		exit(98);
 	}
