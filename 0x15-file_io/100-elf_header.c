@@ -28,7 +28,7 @@ int main(int ac, char **av)
 {
 	Elf64_Ehdr elf64;
 	ssize_t fd, r;
-	
+
 	if (ac != 2)
 	{
 		dprintf(2, "Usage: <%s> <filename>\n", av[0]);
@@ -74,7 +74,8 @@ void is_elf(Elf64_Ehdr *elf64, char *file_name, ssize_t fd)
 	if (!elf64)
 		return;
 
-	if (E[EI_MAG0] != 127 && E[EI_MAG1] != 69 && E[EI_MAG2] != 76 && E[EI_MAG3] != 70)
+	if (E[EI_MAG0] != 127 && E[EI_MAG1] != 69 && 
+			E[EI_MAG2] != 76 && E[EI_MAG3] != 70)
 	{
 		dprintf(2, "%s is not an elf file\n", file_name);
 		close(fd);
@@ -84,7 +85,7 @@ void is_elf(Elf64_Ehdr *elf64, char *file_name, ssize_t fd)
 
 /**
  * print_magic - prints magic of elf file
- * @elf: elf.h struct containing file info
+ * @elf64: elf.h struct containing file info
  */
 void print_magic(Elf64_Ehdr *elf64)
 {
@@ -137,7 +138,7 @@ void print_data(Elf64_Ehdr *elf64)
 		return;
 
 	printf(" Data:                              ");
-	switch(E[EI_DATA])
+	switch (E[EI_DATA])
 	{
 		case ELFDATA2LSB:
 			printf("2's complement, little-endian\n");
@@ -178,7 +179,7 @@ void print_version(Elf64_Ehdr *elf64)
  */
 void print_os_abi(Elf64_Ehdr *elf64)
 {
-	if(!elf64)
+	if (!elf64)
 		return;
 
 	printf(" OS/ABI:                            ");
