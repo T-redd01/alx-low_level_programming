@@ -74,7 +74,7 @@ void is_elf(Elf64_Ehdr *elf64, char *file_name, ssize_t fd)
 	if (!elf64)
 		return;
 
-	if (E[EI_MAG0] != 127 && E[EI_MAG1] != 69 && 
+	if (E[EI_MAG0] != 127 && E[EI_MAG1] != 69 &&
 			E[EI_MAG2] != 76 && E[EI_MAG3] != 70)
 	{
 		dprintf(2, "%s is not an elf file\n", file_name);
@@ -262,7 +262,6 @@ void print_type(Elf64_Ehdr *elf64)
 			printf("Unknown file type\n");
 			break;
 	}
-			
 }
 
 /**
