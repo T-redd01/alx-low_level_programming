@@ -167,7 +167,7 @@ void print_version(Elf64_Ehdr *elf64)
 			printf("%d (current)\n", E[EI_VERSION]);
 			break;
 		default:
-			printf("invalid (none)\n");
+			printf("Invalid (none)\n");
 			break;
 	}
 }
@@ -184,17 +184,20 @@ void print_os_abi(Elf64_Ehdr *elf64)
 	printf(" OS/ABI:                            ");
 	switch (E[EI_OSABI])
 	{
+		case ELFOSABI_SYSV:
+			printf("UNIX - System V\n");
+			break;
 		case ELFOSABI_HPUX:
 			printf("HP-UX\n");
 			break;
 		case ELFOSABI_NETBSD:
-			printf("NetBSD\n");
+			printf("UNIX - NetBSD\n");
 			break;
 		case ELFOSABI_LINUX:
 			printf("Linux\n");
 			break;
 		case ELFOSABI_SOLARIS:
-			printf("Solaris\n");
+			printf("UNIX - Solaris\n");
 			break;
 		case ELFOSABI_IRIX:
 			printf("IRIX\n");
@@ -212,7 +215,7 @@ void print_os_abi(Elf64_Ehdr *elf64)
 			printf("Stand-alone (embedded)\n");
 			break;
 		default:
-			printf("UNIX System V\n");
+			printf("<unknown: %d>\n", E[EI_OSABI]);
 			break;
 	}
 }
@@ -243,16 +246,16 @@ void print_type(Elf64_Ehdr *elf64)
 	switch (elf64->e_type)
 	{
 		case ET_REL:
-			printf("REL (relocatable file)\n");
+			printf("REL (Relocatable file)\n");
 			break;
 		case ET_EXEC:
-			printf("EXEC (executable file)\n");
+			printf("EXEC (Executable file)\n");
 			break;
 		case ET_DYN:
-			printf("DYN (shared object file)\n");
+			printf("DYN (Shared object file)\n");
 			break;
 		case ET_CORE:
-			printf("CORE (core file)\n");
+			printf("CORE (Core file)\n");
 			break;
 		default:
 			printf("Unknown file type\n");
