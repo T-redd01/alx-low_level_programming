@@ -32,7 +32,7 @@ int main(int ac, char **av)
 
 	if (ac != 2)
 	{
-		write_errs("Usage: <", av[0], "> <filename>\n");
+		dprintf(STDERR_FILENO, "Usage: %s file_name\n", av[0]);
 		exit(98);
 	}
 
@@ -47,7 +47,6 @@ int main(int ac, char **av)
 	if (r == -1)
 	{
 		write_errs("Cannot read from file: <", av[1], ">\n");
-		close(fd);
 		exit(98);
 	}
 	is_elf(&elf64, av[1], fd); /* check if elf file */
