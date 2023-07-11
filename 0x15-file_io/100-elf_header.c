@@ -75,8 +75,8 @@ void is_elf(Elf64_Ehdr *elf64, char *file_name, ssize_t fd)
 	if (!elf64)
 		return;
 
-	if (E[EI_MAG0] != 127 && E[EI_MAG1] != 69 &&
-			E[EI_MAG2] != 76 && E[EI_MAG3] != 70)
+	if (E[EI_MAG0] != 127 || E[EI_MAG1] != 69 ||
+			E[EI_MAG2] != 76 || E[EI_MAG3] != 70)
 	{
 		dprintf(STDERR_FILENO, "%s: is not an elf file\n", file_name);
 		c = close(fd);
@@ -128,8 +128,11 @@ void print_class(Elf64_Ehdr *elf64)
 		case ELFCLASS64:
 			printf("ELF64\n"); /* print for 64 bit */
 			break;
+		case ELFCLASSNONE:
+			printf("None\n");
+			break;
 		default:
-			printf("invalid(%d)\n", E[EI_CLASS]); /* anything else is invalid */
+			printf("<unknown: %x>\n", E[EI_CLASS]);
 			break;
 	}
 }
@@ -146,6 +149,9 @@ void print_data(Elf64_Ehdr *elf64)
 	printf("  Data:                              ");
 	switch (E[EI_DATA])
 	{
+		case ELFDATANONE:
+			printf("None\n");
+			break;
 		case ELFDATA2LSB:
 			printf("2's complement, little-endian\n");
 			break;
@@ -153,7 +159,7 @@ void print_data(Elf64_Ehdr *elf64)
 			printf("2's complement, big-endian\n");
 			break;
 		default:
-			printf("unknown data format\n");
+			printf("<unknown: %x>\n", E[EI_DATA]);
 			break;
 	}
 }
@@ -174,7 +180,7 @@ void print_version(Elf64_Ehdr *elf64)
 			printf("%d (current)\n", E[EI_VERSION]);
 			break;
 		default:
-			printf("Invalid (none)\n");
+			printf("%d\n", E[EI_VERSION]);
 			break;
 	}
 }
@@ -191,35 +197,35 @@ void print_os_abi(Elf64_Ehdr *elf64)
 	printf("  OS/ABI:                            ");
 	switch (E[EI_OSABI])
 	{
-		case ELFOSABI_SYSV:
+		case ELFOSABI_NONE:
 			printf("UNIX - System V\n");
 			break;
 		case ELFOSABI_HPUX:
-			printf("HP-UX\n");
+			printf("UNIX - HP-UX\n");
 			break;
 		case ELFOSABI_NETBSD:
 			printf("UNIX - NetBSD\n");
 			break;
 		case ELFOSABI_LINUX:
-			printf("Linux\n");
+			printf("UNIX - Linux\n");
 			break;
 		case ELFOSABI_SOLARIS:
 			printf("UNIX - Solaris\n");
 			break;
 		case ELFOSABI_IRIX:
-			printf("IRIX\n");
+			printf("UNIX - IRIX\n");
 			break;
 		case ELFOSABI_FREEBSD:
-			printf("FreeBSD\n");
+			printf("UNIX - FreeBSD\n");
 			break;
 		case ELFOSABI_TRU64:
-			printf("TRU64 UNIX\n");
+			printf("UNIX - TRU64 UNIX\n");
 			break;
 		case ELFOSABI_ARM:
-			printf("ARM architecture\n");
+			printf("ARM\n");
 			break;
 		case ELFOSABI_STANDALONE:
-			printf("Stand-alone (embedded)\n");
+			printf("Stand-alone\n");
 			break;
 		default:
 			printf("<unknown: %d>\n", E[EI_OSABI]);
@@ -249,9 +255,15 @@ void print_type(Elf64_Ehdr *elf64)
 	if (!elf64)
 		return;
 
+	/*if (E[EI_DATA] == ELFDATA2MSB)
+		elf64->e_type >>= 8;*/
+
 	printf("  Type:                              ");
 	switch (elf64->e_type)
 	{
+		case ET_NONE:
+			printf("NONE (None)\n");
+			break;
 		case ET_REL:
 			printf("REL (Relocatable file)\n");
 			break;
@@ -265,7 +277,7 @@ void print_type(Elf64_Ehdr *elf64)
 			printf("CORE (Core file)\n");
 			break;
 		default:
-			printf("Unknown file type\n");
+			printf("<unknown: %x>\n", elf64->e_type);
 			break;
 	}
 }
@@ -279,6 +291,18 @@ void print_entry_point_address(Elf64_Ehdr *elf64)
 	if (!elf64)
 		return;
 
-	printf("  Entry point address:               0x%lx\n", elf64->e_entry);
+	/*if (E[EI_DATA] == ELFDATA2MSB)
+	{
+		elf64->e_entry = ((elf64->e_entry << 8) & 0xFF00FF00) |
+			  ((elf64->e_entry >> 8) & 0xFF00FF);
+		elf64->e_entry = (elf64->e_entry << 16) | (elf64->e_entry >> 16);
+	}
+
+	if (E[EI_CLASS] == ELFCLASS32)
+		printf("%#x\n", (unsigned int)(elf64->e_entry));
+	else
+		printf("  Entry point address:               %#lx\n", elf64->e_entry);
+		*/
+	printf("  Entry point address:               %#lx\n", elf64->e_entry);
 }
 
