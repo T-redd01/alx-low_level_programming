@@ -7,7 +7,6 @@
 #define E elf64->e_ident
 
 /* list of funcs other than main */
-void write_errs(char *s1, char *s2, char *s3);
 void is_elf(Elf64_Ehdr *elf64, char *file_name, ssize_t fd);
 void print_magic(Elf64_Ehdr *elf64);
 void print_class(Elf64_Ehdr *elf64);
@@ -39,14 +38,14 @@ int main(int ac, char **av)
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
 	{
-		write_errs("Cannot open file: <", av[1], ">\n");
+		dprintf(STDERR_FILENO, "Failed to open file: %s\n", av[1]);
 		exit(98);
 	}
 
 	r = read(fd, &elf64, sizeof(Elf64_Ehdr));
 	if (r == -1)
 	{
-		write_errs("Cannot read from file: <", av[1], ">\n");
+		dprintf(STDERR_FILENO, "Failed to read from file: %s\n", av[1]);
 		exit(98);
 	}
 	is_elf(&elf64, av[1], fd); /* check if elf file */
@@ -64,48 +63,6 @@ int main(int ac, char **av)
 }
 
 /**
- * write_errs - writes err msg
- * @s1: 1st into buffer
- * @s2: 2nd into buffer
- * @s3: 3rd into buffer
- */
-void write_errs(char *s1, char *s2, char *s3)
-{
-	char buf[1024];
-	int i = 0;
-
-	if (s1)
-	{
-		while (*s1)
-		{
-			buf[i++] = *s1;
-			s1++;
-		}
-
-	}
-
-	if (s2)
-	{
-		while (*s2)
-		{
-			buf[i++] = *s2;
-			s2++;
-		}
-	}
-
-	if (s3)
-	{
-		while (*s3)
-		{
-			buf[i++] = *s3;
-			s3++;
-		}
-	}
-	buf[i] = '\0';
-	write(2, buf, i);
-}
-
-/**
  * is_elf - checks if av[1] is an elf file, if not exit programme
  * @elf64: elf.h struct containing file info
  * @file_name: av[1], name of file
@@ -113,14 +70,21 @@ void write_errs(char *s1, char *s2, char *s3)
  */
 void is_elf(Elf64_Ehdr *elf64, char *file_name, ssize_t fd)
 {
+	int c;
+
 	if (!elf64)
 		return;
 
-	if (E[EI_MAG0] != 127 && E[EI_MAG1] != 69 &&
-			E[EI_MAG2] != 76 && E[EI_MAG3] != 70)
+	if (E[EI_MAG0] != 127 || E[EI_MAG1] != 69 ||
+			E[EI_MAG2] != 76 || E[EI_MAG3] != 70)
 	{
-		write_errs(file_name, " is not an elf file\n", NULL);
-		close(fd);
+		dprintf(STDERR_FILENO, "%s: is not an elf file\n", file_name);
+		c = close(fd);
+		if (c == -1)
+		{
+			dprintf(STDERR_FILENO, "Cannot close file: %s\n", file_name);
+			exit(98);
+		}
 		exit(98);
 	}
 }
