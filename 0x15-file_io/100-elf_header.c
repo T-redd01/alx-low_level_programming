@@ -134,7 +134,7 @@ void print_magic(Elf64_Ehdr *elf64)
 {
 	int i;
 
-	printf(" Magic:   ");
+	printf("  Magic:   ");
 	for (i = 0; i < EI_NIDENT; i++)
 	{
 		if (i == 0)
@@ -156,7 +156,7 @@ void print_class(Elf64_Ehdr *elf64)
 	if (!elf64)
 		return;
 
-	printf(" Class:                             ");
+	printf("  Class:                             ");
 	switch (E[EI_CLASS])
 	{
 		case ELFCLASS32:
@@ -180,7 +180,7 @@ void print_data(Elf64_Ehdr *elf64)
 	if (!elf64)
 		return;
 
-	printf(" Data:                              ");
+	printf("  Data:                              ");
 	switch (E[EI_DATA])
 	{
 		case ELFDATA2LSB:
@@ -204,7 +204,7 @@ void print_version(Elf64_Ehdr *elf64)
 	if (!elf64)
 		return;
 
-	printf(" Version:                           ");
+	printf("  Version:                           ");
 	switch (E[EI_VERSION])
 	{
 		case EV_CURRENT:
@@ -225,7 +225,7 @@ void print_os_abi(Elf64_Ehdr *elf64)
 	if (!elf64)
 		return;
 
-	printf(" OS/ABI:                            ");
+	printf("  OS/ABI:                            ");
 	switch (E[EI_OSABI])
 	{
 		case ELFOSABI_SYSV:
@@ -273,7 +273,7 @@ void print_abi_version(Elf64_Ehdr *elf64)
 	if (!elf64)
 		return;
 
-	printf(" ABI Version:                       ");
+	printf("  ABI Version:                       ");
 	printf("%d\n", E[EI_ABIVERSION]);
 }
 
@@ -286,7 +286,7 @@ void print_type(Elf64_Ehdr *elf64)
 	if (!elf64)
 		return;
 
-	printf(" Type:                              ");
+	printf("  Type:                              ");
 	switch (elf64->e_type)
 	{
 		case ET_REL:
@@ -316,6 +316,6 @@ void print_entry_point_address(Elf64_Ehdr *elf64)
 	if (!elf64)
 		return;
 
-	printf(" Entry point address:               0x%lx\n", elf64->e_entry);
+	printf("  Entry point address:               0x%lx\n", elf64->e_entry);
 }
 
