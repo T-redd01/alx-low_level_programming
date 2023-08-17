@@ -1,6 +1,6 @@
 #include "lists.h"
 
-/*
+/**
  * print_dlistint - print nodes of doubly linked list
  * @h: node in list
  *
