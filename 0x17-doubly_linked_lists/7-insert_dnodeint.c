@@ -1,5 +1,13 @@
 #include "lists.h"
 
+/**
+ * insert_dnodeint_at_index - insert node into list
+ * @h: node in list
+ * @idx: index to insert at
+ * @n: node value
+ *
+ * Return: node (Success), NULL (Fail)
+ */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
 	unsigned int i;
