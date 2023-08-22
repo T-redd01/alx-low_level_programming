@@ -1,2 +1,3 @@
 #!/bin/bash
-export LD_PRELOAD=$PWD/libmylib.so
+gcc -shared -o libmy_lib.so -fpic inj.c
+export LD_PRELOAD=$PWD/libmy_lib.so
