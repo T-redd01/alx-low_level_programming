@@ -40,6 +40,7 @@ int main(void)
     hash_table_set(ht, "vivency", "Value");
 
     hash_table_print(ht);
+	hash_table_delete(ht);
 	val = strdup("");
 	printf("%s\n", val);
 	free(val);
