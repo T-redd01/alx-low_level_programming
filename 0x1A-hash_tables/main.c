@@ -11,6 +11,7 @@
 int main(void)
 {
     hash_table_t *ht;
+	char *val;
 
     ht = hash_table_create(1024);
     hash_table_print(ht);
@@ -46,8 +47,8 @@ int main(void)
     hash_table_set(ht, "vivency", "Value");
 
     hash_table_print(ht);*/
-	if ("" == NULL)
-		printf("\nTrue");
-	printf("\n%s\n", "");
+	val = strdup("");
+	printf("%s\n", val);
+	free(val);
 	return (EXIT_SUCCESS) ;
 }
