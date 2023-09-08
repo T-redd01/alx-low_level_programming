@@ -7,6 +7,11 @@
  */
 void print_bucket(hash_node_t *list, int *flag)
 {
+	if (*flag)
+		printf(", {");
+	else
+		putchar('{');
+	*flag = 0;
 	while (list)
 	{
 		if (*flag)
@@ -31,6 +36,7 @@ void print_bucket(hash_node_t *list, int *flag)
 		}
 		list = list->next;
 	}
+	putchar('}');
 }
 
 /**
@@ -43,16 +49,24 @@ void hash_table_print(const hash_table_t *ht)
 	unsigned long int i;
 	hash_node_t *list = NULL;
 
-	if (!ht || ht->size == 0)
+	if (!ht)
 		return;
 
 	putchar('{');
 	for (i = 0; i < ht->size; i++)
 	{
 		list = ht->array[i];
-		if (list)
-		{
+		if (list && list->next)
 			print_bucket(list, &flag);
+		else if (list)
+		{
+			if (flag)
+				printf(", '%s' : '%s'", list->key, list->value);
+			else
+			{
+				flag = 1;
+				printf("'%s' : '%s'", list->key, list->value);
+			}
 		}
 	}
 	puts("}");
