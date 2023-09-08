@@ -20,7 +20,7 @@ void hash_table_print(const hash_table_t *ht)
 		if (list)
 		{
 			if (flag)
-				printf(", '%s' : '%s'", list->key, list->value);
+				printf(", '%s' : '%s'", list->key, (list->value) ? list->value : "(null)");
 			else
 				printf("'%s' : '%s'", list->key, list->value);
 			flag = 1;
