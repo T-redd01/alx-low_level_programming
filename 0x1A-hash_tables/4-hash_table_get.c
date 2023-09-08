@@ -1,5 +1,11 @@
 #include "hash_tables.h"
 
+/**
+ * hash_table_get - get value at hash table
+ * @ht: hash table to search
+ * @key: key string
+ * Return: value (Succes), NULL (Failure)
+ */
 char *hash_table_get(const hash_table_t *ht, const char *key)
 {
 	unsigned long int idx = 0;
