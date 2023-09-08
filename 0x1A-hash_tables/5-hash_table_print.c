@@ -12,21 +12,21 @@ void print_bucket(hash_node_t *list, int *flag)
 		if (*flag)
 		{
 			if (list->value)
-				printf(", [%lu] '%s' : '%s'", key_index((const unsigned char *)list->key, 1024), list->key, list->value);
+				printf(", '%s' : '%s'", list->key, list->value);
 			else
-				printf(", [%lu] '%s' : ''", key_index((const unsigned char *)list->key, 1024), list->key);
+				printf(", '%s' : ''", list->key);
 		}
 		else
 		{
 			if (list->value)
 			{
 				*flag = 1;
-				printf("[%lu] '%s' : '%s'", key_index((const unsigned char *)list->key, 1024), list->key, list->value);
+				printf("'%s' : '%s'", list->key, list->value);
 			}
 			else
 			{
 				*flag = 1;
-				printf("[%lu] '%s' : ''", key_index((const unsigned char *)list->key, 1024), list->key);
+				printf("'%s' : ''", list->key);
 			}
 		}
 		list = list->next;
