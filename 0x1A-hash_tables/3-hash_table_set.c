@@ -27,12 +27,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	}
 
 	node->value = (value) ? strdup(value) : NULL;
-	if (!(node->value) && value)
-	{
-		free(node->key);
-		free(node);
-		return (0);
-	}
+
 	index = key_index((const unsigned char *)key, ht->size);
 	node->next = ht->array[index];
 	ht->array[index] = node;

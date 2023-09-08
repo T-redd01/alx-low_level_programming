@@ -23,8 +23,7 @@ int main(void)
     hash_table_set(ht, "98", "Battery Street");
     hash_table_print(ht);
 
-	hash_table_print(ht);
-    hash_table_set(ht, "c", "fun");
+    /*hash_table_set(ht, "c", "fun");
     hash_table_set(ht, "python", "awesome");
     hash_table_set(ht, "Bob", "and Kris love asm");
     hash_table_set(ht, "N", "queens");
@@ -46,6 +45,9 @@ int main(void)
     hash_table_set(ht, "dram", "Value");
     hash_table_set(ht, "vivency", "Value");
 
-    hash_table_print(ht);
+    hash_table_print(ht);*/
+	if ("" == NULL)
+		printf("\nTrue");
+	printf("\n%s\n", "");
 	return (EXIT_SUCCESS) ;
 }
