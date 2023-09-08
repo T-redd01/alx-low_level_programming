@@ -1,6 +1,39 @@
 #include "hash_tables.h"
 
 /**
+ * print_bucket - print list at index
+ * @list: list to print
+ * @flag: whether next value or first
+ */
+void print_bucket(hash_node_t *list, int *flag)
+{
+	while (list)
+	{
+		if (*flag)
+		{
+			if (list->value)
+				printf(", '%s' : '%s'", list->key, list->value);
+			else
+				printf(", '%s' : ''", list->key);
+		}
+		else
+		{
+			if (list->value)
+			{
+				*flag = 1;
+				printf("'%s' : '%s'", list->key, list->value);
+			}
+			else
+			{
+				*flag = 1;
+				printf("'%s' : ''", list->key);
+			}
+		}
+		list = list->next;
+	}
+}
+
+/**
  * hash_table_print - print entire hash table
  * @ht: the hash table
  */
@@ -19,11 +52,7 @@ void hash_table_print(const hash_table_t *ht)
 		list = ht->array[i];
 		if (list)
 		{
-			if (flag)
-				printf(", '%s' : '%s'", list->key, (list->value) ? list->value : "(null)");
-			else
-				printf("'%s' : '%s'", list->key, list->value);
-			flag = 1;
+			print_bucket(list, &flag);
 		}
 	}
 	puts("}");
