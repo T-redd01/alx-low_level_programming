@@ -129,7 +129,7 @@ void shash_table_print(const shash_table_t *ht)
 
 	if (!ht)
 		return;
-	
+
 	printf("{");
 	for (i = 0; i < ht->size; i++)
 	{
@@ -155,6 +155,8 @@ void shash_table_print(const shash_table_t *ht)
  */
 void shash_table_print_rev(const shash_table_t *ht)
 {
+	if  (!ht)
+		return;
 	printf("Not implemented\n");
 }
 
@@ -164,5 +166,7 @@ void shash_table_print_rev(const shash_table_t *ht)
  */
 void shash_table_delete(shash_table_t *ht)
 {
+	if (!ht)
+		return;
 	printf("Not implemented\n");
 }
