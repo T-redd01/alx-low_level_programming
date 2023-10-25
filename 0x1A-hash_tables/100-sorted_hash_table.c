@@ -1,11 +1,31 @@
 #include "hash_tables.h"
 
-shash_table_t *shash_table_create(unsigned long int size);
-int shash_table_set(shash_table_t *ht, const char *key, const char *value);
-char *shash_table_get(const shash_table_t *ht, const char *key);
-void shash_table_print(const shash_table_t *ht);
-void shash_table_print_rev(const shash_table_t *ht);
-void shash_table_delete(shash_table_t *ht);
+int compare_str(char *s1, char *s2)
+{
+	unsigned int i;
+
+	if (!s1 && !s2)
+		return (1);
+
+	if (!s1 && s2)
+		return (0);
+
+	if (s1 && !s2)
+		return (1);
+
+	for (i = 0; s1[i] && s2[i]; i++)
+	{
+		if (s1[i] > s2[i])
+			return (1);
+		if (s2[i] > s1[i])
+			return (0);
+	}
+	if (s1[i] > s2[i])
+		return (1);
+	if (s2[i] > s1[i])
+		return (0);
+	return (0);
+}
 
 /**
  * shash_table_create - create / allocate for hash table
