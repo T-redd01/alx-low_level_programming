@@ -1,25 +1,21 @@
 CC = gcc
 SRC = main.c school.c
-OBJ = $(patsubst %.c, %.o, $(SRC))
+OBJ = $(patsubst %.c, %.o $(SRC))
 NAME = school
-RM = rm
+RM = rm -f
 
 all: $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
 
 %.o: %.c
-	$(CC) -c -o $@ $<
+	$(CC) -c -o $@ @^
 
 clean:
-	$(RM) -f *~ school
-	$(RM) -f *.swap
-	$(RM) -f $(NAME)
+	$(RM) *~
 
 oclean:
-	$(RM) -f $(OBJ)
+	$(RM) $(OBJ)
 
 fclean: clean oclean
 
-re: FORCE
-
-FORCE: oclean all
+re: oclean all
