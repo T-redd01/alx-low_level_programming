@@ -4,10 +4,10 @@ OBJ = $(patsubst %.c, %.o, $(SRC))
 NAME = school
 RM = rm -f
 
-all : $(OBJ)
+all: $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
 
-%.o : %.c
+%.o: %.c
 	$(CC) -c -o $@ $<
 
 clean:
@@ -20,4 +20,6 @@ oclean:
 
 fclean: clean oclean
 
-re: oclean all
+re: FORCE
+
+FORCE: oclean all
