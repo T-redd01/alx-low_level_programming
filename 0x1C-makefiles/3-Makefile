@@ -12,6 +12,7 @@ all : $(OBJ)
 
 clean:
 	$(RM) *~ school
+	$(RM) *.swap
 	$(RM) $(NAME)
 
 oclean:
