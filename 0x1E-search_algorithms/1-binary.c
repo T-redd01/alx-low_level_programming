@@ -31,13 +31,13 @@ int binary_search(int *array, size_t size, int value)
 {
 	size_t mid = size / 2, beg = 0, end = size;
 
-	while (beg < end)
+	while (1)
 	{
 		print_arr(array, beg, end);
 		if (array[mid] == value)
 			return (mid);
 
-		if (beg + 2 == size)
+		if (mid == 0 || (mid + 1) == size)
 			break;
 
 		if (value > array[mid])
