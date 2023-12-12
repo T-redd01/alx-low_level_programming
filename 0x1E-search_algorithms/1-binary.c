@@ -29,28 +29,26 @@ void print_arr(int *arr, size_t beg, size_t end)
  */
 int binary_search(int *array, size_t size, int value)
 {
-	size_t i, mid = size / 2, beg = 0, end = size;
+	size_t mid = size / 2, beg = 0, end = size;
 
-	for (i = 0; i < size; i++)
+	while (beg < end)
 	{
 		print_arr(array, beg, end);
-		if (value == array[mid])
+		if (array[mid] == value)
 			return (mid);
 
-		if (mid == 0 || mid == (size - 1))
+		if (beg + 2 == size)
 			break;
 
 		if (value > array[mid])
 		{
 			beg = mid;
-			end = size;
-			mid = (mid + size) / 2;
+			mid = (mid + end) / 2;
 		}
 		else
 		{
-			beg = 0;
 			end = mid;
-			mid = mid / 2;
+			mid = (beg + mid) / 2;
 		}
 	}
 	return (-1);
