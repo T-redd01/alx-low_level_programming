@@ -29,15 +29,15 @@ void print_arr(int *arr, size_t beg, size_t end)
  */
 int binary_search(int *array, size_t size, int value)
 {
-	size_t mid = size / 2, beg = 0, end = size;
+	size_t i, mid = size / 2, beg = 0, end = size;
 
-	while (1)
+	for (i = 0; i < size; i++)
 	{
 		print_arr(array, beg, end);
 		if (array[mid] == value)
 			return (mid);
 
-		if (mid == 0 || (mid + 1) == size)
+		if (mid == beg || mid == end)
 			break;
 
 		if (value > array[mid])
