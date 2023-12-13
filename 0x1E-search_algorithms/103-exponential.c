@@ -10,7 +10,8 @@
  */
 int exponential_search(int *array, size_t size, int value)
 {
-	size_t i = 1, l = 0, ret = 0;
+	size_t i = 1, l = 0;
+	int ret = -1;
 
 	while (i < size)
 	{

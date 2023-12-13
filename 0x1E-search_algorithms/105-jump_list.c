@@ -1,6 +1,14 @@
 #include "search_algos.h"
 #include <math.h>
 
+/**
+ * jump_list - jump to nodes to search
+ * @list: list to search
+ * @size: size of list
+ * @value: value to find
+ *
+ * Return: node with val, null
+ */
 listint_t *jump_list(listint_t *list, size_t size, int value)
 {
 	size_t i = 0, jmp = sqrt(size);
